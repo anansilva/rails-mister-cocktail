@@ -4,23 +4,33 @@ class DosesController < ApplicationController
     @dose = Dose.new
   end
 
-  def create
-    @dose = @cocktail.doses.new(dose_params)
-    @dose.cocktail = Cocktail.find(params[:cocktail_id])
-    # OR
-    # @dose.cocktail_id = params[:cocktail_id]
+ def create
+    # 1/ Retrieve data from the form
+    # 2/ Create a new dose
+    # @dose = Dose.new(dose_params)
+    # # 3/ Assign the right cocktail
 
-    if @dose.save
+    # # EITHER
+    # @dose.cocktail = Cocktail.find(params[:cocktail_id])
+    # # OR
+    # @dose.cocktail_id = params[:cocktail_id]
+    # # OR
+
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose = @cocktail.doses.new(dose_params)
+    has_been_saved = @dose.save
+
+    if has_been_saved
       redirect_to cocktail_path(id: @cocktail.id)
     else
       render :new
     end
   end
 
-  def destroy
+ def destroy
     @dose = Dose.find(params[:id])
     @dose.destroy
-    redirect_to cocktail_path(id: @cocktail.id)
+    redirect_to :back
   end
 
   private

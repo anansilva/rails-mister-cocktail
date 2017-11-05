@@ -1,5 +1,5 @@
-<%= form_for(@cocktail) do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
+<%= simple_form_for @cocktail do |f| %>
+<%= f.input :name %>
+<%= f.input :photos, as: :attachinary %>
 <%= f.submit %>
 <% end %>

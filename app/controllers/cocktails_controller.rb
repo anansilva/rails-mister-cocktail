@@ -7,6 +7,7 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = Cocktail.all
+    landing_page
   end
 
   def show
@@ -23,11 +24,15 @@ class CocktailsController < ApplicationController
 
   private
 
+  def landing_page
+    @disable_nav = true
+  end
+
   def find_id
     @cocktail = Cocktail.find(params[:id])
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :ingredients, :doses)
+    params.require(:cocktail).permit(:name, :ingredients, :doses, photos: [])
   end
 end

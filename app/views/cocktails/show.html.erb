@@ -1,35 +1,40 @@
-  <div class="wrap">
-      <h1><%= @cocktail.name %></h1>
-    <div class="container-content">
+<div class="container">
+  <div class="container-photo">
+    <div class="img-responsive">
       <% @cocktail.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, height: 400, crop: :scale %>
+      <%= cl_image_tag photo.path, width: 800, crop: :fit %>
       <% end %>
-      <h2>Doses</h2>
-
-      <table id="pure-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @cocktail.doses.each do |dose| %>
-          <tr>
-            <td> <%= dose.description %> of <%= dose.ingredient.name %> </td>
-            <td id="remove"><%= link_to "(X)", dose_path(id: dose.id), method: :delete %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-
     </div>
-
-    <div class="container-links">
-      <div>
-        <%= link_to "Add a new dose", new_cocktail_dose_path(cocktail_id: @cocktail.id) %>
-      </div>
+    <div class="container-title">
+      <%= @cocktail.name.upcase %>
     </div>
   </div>
+
+  <div class="container-content">
+    <h2>Doses</h2>
+
+    <table id="pure-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cocktail.doses.each do |dose| %>
+        <tr>
+          <td> <%= dose.description %> of <%= dose.ingredient.name %> </td>
+          <td id="remove"><%= link_to "(X)", dose_path(id: dose.id), method: :delete %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="container-links">
+      <%= link_to "Add a new dose", new_cocktail_dose_path(cocktail_id: @cocktail.id), {class: "btn btn-primary btn-sm"} %>
+    </div>
+  </div>
+</div>
+
 

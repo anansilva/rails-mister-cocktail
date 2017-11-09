@@ -1,17 +1,39 @@
 .container-content {
-  margin: 20px;
+  margin: 0 auto;
   padding: 20px;
+  background-color: white;
+  text-align: center;
 }
- h1 {
-    font-size: 30px;
-  }
-  h2 {
-    font-size: 25px;
-  }
-  h3 {
-   font-size: 20px;
- }
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 25px;
+}
+h3 {
+ font-size: 20px;
+}
 
+.img-responsive {
+    margin: 0 auto;
+}
+
+.container-photo {
+  position: relative;
+  padding-top: 70px;
+}
+
+.container-title {
+  position: absolute;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  color: white;
+  top: 100px;
+  left: 30px;
+}
+
+.container-links {
+  margin-top: 30px;
+}
 
 #pure-table {
  text-align: left;
@@ -22,10 +44,6 @@
 
 #remove {
   font-size: 15px;
-}
-
-.wrap {
-text-align: center;
 }
 
 #pure-table {

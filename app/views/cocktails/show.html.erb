@@ -1,25 +1,35 @@
-
-<div class="container">
   <div class="wrap">
-    <div class="container-content">
       <h1><%= @cocktail.name %></h1>
+    <div class="container-content">
       <% @cocktail.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+      <%= cl_image_tag photo.path, height: 400, crop: :scale %>
       <% end %>
-
       <h2>Doses</h2>
-      <h3><% @cocktail.doses.each do |dose| %></h3>
-      <h3><%= dose.description %> of <%= dose.ingredient.name %></h3>
-      <p><%= link_to "Remove this dose", dose_path(id: dose.id), method: :delete %></p>
-      <% end %>
+
+      <table id="pure-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cocktail.doses.each do |dose| %>
+          <tr>
+            <td> <%= dose.description %> of <%= dose.ingredient.name %> </td>
+            <td id="remove"><%= link_to "(X)", dose_path(id: dose.id), method: :delete %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
 
     <div class="container-links">
       <div>
         <%= link_to "Add a new dose", new_cocktail_dose_path(cocktail_id: @cocktail.id) %>
       </div>
-      <%= link_to 'Back', cocktails_path %>
     </div>
   </div>
-</div>
 

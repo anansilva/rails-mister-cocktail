@@ -22,6 +22,7 @@ class DosesController < ApplicationController
 
     if has_been_saved
       redirect_to cocktail_path(id: @cocktail.id)
+      flash[:notice] = "dose saved"
     else
       render :new
     end

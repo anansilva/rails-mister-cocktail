@@ -1,12 +1,10 @@
 <div class="container">
   <div class="container-photo">
-    <div class="img-responsive">
       <% @cocktail.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 800, crop: :fit %>
+      <%= cl_image_tag photo.path,  :width => 500, :crop => :fit %>
       <% end %>
-    </div>
     <div class="container-title">
-      <%= @cocktail.name.upcase %>
+     <h1><%= @cocktail.name.upcase %></h1>
     </div>
   </div>
 

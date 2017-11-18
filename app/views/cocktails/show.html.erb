@@ -23,14 +23,14 @@
         <% @cocktail.doses.each do |dose| %>
         <tr>
           <td> <%= dose.description %> of <%= dose.ingredient.name %> </td>
-          <td id="remove"><%= link_to "(X)", dose_path(id: dose.id), method: :delete %></td>
+          <td id="remove"><%= link_to dose_path(id: dose.id), method: :delete do %><i class="fa fa-trash"></i><% end %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
 
     <div class="container-links">
-      <%= link_to "Add a new dose", new_cocktail_dose_path(cocktail_id: @cocktail.id), {class: "btn btn-primary btn-sm"} %>
+      <%= link_to "Add a new dose", new_cocktail_path(cocktail_id: @cocktail.id), {class: "btn btn-primary btn-sm"} %>
     </div>
   </div>
 </div>
